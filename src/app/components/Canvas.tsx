@@ -26,7 +26,6 @@ export default function Canvas() {
         const width = containerRef?.current?.offsetWidth ?? p.windowWidth;
 
         const height = containerRef?.current?.offsetHeight ?? p.windowHeight;
-     
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const onScreen = (value: any) => {

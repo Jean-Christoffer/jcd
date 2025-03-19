@@ -10,12 +10,18 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@sanity/icons": "^3.7.0",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/vision": "^3.80.1",
     "@types/p5": "^1.7.6",
     "gsap": "^3.12.7",
     "next": "15.2.2",
+    "next-sanity": "^9.9.5",
     "p5": "^1.11.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sanity": "^3.80.1",
+    "styled-components": "^6.1.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
