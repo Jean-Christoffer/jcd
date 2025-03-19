@@ -3,13 +3,11 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
+import About from "./About";
 
 gsap.registerPlugin(useGSAP);
 
-interface HeaderProps {
-  handleClick: () => void;
-}
-export default function Header({ handleClick }: HeaderProps) {
+export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -38,7 +36,7 @@ export default function Header({ handleClick }: HeaderProps) {
       );
 
       tl.fromTo(
-        ".animate4",
+        ".animate4, .animate5",
         { y: -20, opacity: 0 },
         { y: 0, opacity: 1, ease: "sine.inOut" }
       );
@@ -47,11 +45,8 @@ export default function Header({ handleClick }: HeaderProps) {
   );
 
   return (
-    <div className="max-w-[590px] z-10 relative">
-      <h1
-        className="flex flex-col text-4xl md:text-6xl font-bold"
-        ref={containerRef}
-      >
+    <div className="max-w-[590px] z-10 relative" ref={containerRef}>
+      <h1 className="flex flex-col text-4xl md:text-6xl font-bold">
         <span className="animate1">Jean</span>
         <span className="animate2"> Christoffer</span>
         <span className="animate3 relative h-1 w-full bg-[#d9d9d9] my-2 overflow-hidden">
@@ -59,19 +54,7 @@ export default function Header({ handleClick }: HeaderProps) {
         </span>
         <span className="animate4">Web Developer</span>
       </h1>
-      <ul className="flex items-center gap-4 mt-4">
-        <Buttons handleClick={handleClick} />
-      </ul>
+      <About />
     </div>
   );
 }
-
-const Buttons = ({ handleClick }: HeaderProps) => {
-  const list = ["Link", "About", "Contact"];
-
-  return list.map((l, i) => (
-    <button key={i} className="cursor-pointer" onClick={handleClick}>
-      {l}
-    </button>
-  ));
-};

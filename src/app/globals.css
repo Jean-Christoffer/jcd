@@ -25,6 +25,22 @@ body {
 *::-webkit-scrollbar {
   display: none;
 }
-.customGreen{
+.customGreen {
   background-color: hsl(146, 72%, 58%);
+}
+.customGreenSvg {
+  stroke: hsl(146, 72%, 58%);
+}
+.hero-section,
+.work {
+  height: calc(100vh - 132px);
+}
+.work {
+  margin-top: 64px;
+}
+.canvas-wrapper {
+  width: calc(100% + 64px);
+  margin-left: -32px;
+  top: -32px;
+  height: calc(100% + 68px);
 }

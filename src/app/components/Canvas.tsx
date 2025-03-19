@@ -26,6 +26,7 @@ export default function Canvas() {
         const width = containerRef?.current?.offsetWidth ?? p.windowWidth;
 
         const height = containerRef?.current?.offsetHeight ?? p.windowHeight;
+     
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const onScreen = (value: any) => {
@@ -104,7 +105,5 @@ export default function Canvas() {
     };
   }, []);
 
-  return (
-    <div ref={containerRef} className="absolute overflow-hidden inset-0" />
-  );
+  return <div ref={containerRef} className="absolute inset-0 canvas-wrapper" />;
 }
