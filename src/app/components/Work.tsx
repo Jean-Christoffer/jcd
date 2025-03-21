@@ -1,21 +1,24 @@
 "use client";
 
-//import { type SanityDocument } from "next-sanity";
-//import { client } from "@/sanity/client";
+import type { WORK_QUERYResult } from "@/sanity/types";
+
 import Link from "next/link";
+import Card from "./Card";
 
-export default function Work() {
-  const work = ["Schibsted Media", "Aftenposten"];
+interface WorkProps {
+  data: WORK_QUERYResult;
+}
 
+export default function Work({ data }: WorkProps) {
   return (
     <article className="flex flex-col gap-7">
       <ul className="flex flex-col gap-7 list">
         <h1 className="text-4xl md:text-6xl font-bold list-item opacity-0">
           Experience
         </h1>
-        {work.map((l, i) => (
-          <li key={i} className="text-2xl md:text-4xl opacity-0 list-item">
-            <button className="cursor-pointer">{l}</button>
+        {data.map((work) => (
+          <li key={work.title} className="list-item opacity-0">
+            <Card workData={work} />
           </li>
         ))}
         <p className="list-item  opacity-0 ">

@@ -13,7 +13,8 @@ export const workType = defineType({
     }),
     defineField({
       name: 'description',
-      type: 'string',
+      type: 'text',
+      rows:10
     }),
     defineField({
       name: 'categories',

@@ -48,12 +48,12 @@ export default function Hero() {
   return (
     <div className="max-w-[590px] z-10 relative" ref={containerRef}>
       <h1 className="flex flex-col text-4xl md:text-6xl font-bold">
-        <span className="animate1">Jean</span>
-        <span className="animate2"> Christoffer</span>
-        <span className="animate3 relative h-1 w-full bg-[#d9d9d9] my-2 overflow-hidden">
+        <span className="animate1 opacity-0">Jean</span>
+        <span className="animate2 opacity-0"> Christoffer</span>
+        <span className="animate3 relative h-1 w-full bg-[#d9d9d9] my-2 overflow-hidden opacity-0">
           <span className="absolute top-0 left-0 h-full w-full customGreen scale-x-0 origin-left"></span>
         </span>
-        <span className="animate4">Web Developer</span>
+        <span className="animate4 opacity-0">Web Developer</span>
       </h1>
       <About />
     </div>

@@ -9,9 +9,15 @@ import Canvas from "./Canvas";
 import Hero from "./Hero";
 import Work from "./Work";
 
+import { WORK_QUERYResult } from "@/sanity/types";
+
+interface BodyProps {
+  data: WORK_QUERYResult;
+}
+
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export default function Body() {
+export default function Body({ data }: BodyProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const [pathData, setPathData] = useState<string>("");
@@ -160,7 +166,7 @@ export default function Body() {
       </section>
 
       <section className="work relative z-10">
-        <Work />
+        <Work data={data} />
       </section>
     </div>
   );
