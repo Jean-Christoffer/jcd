@@ -33,14 +33,35 @@ body {
 }
 .hero-section,
 .work {
-  height: calc(100vh - 132px);
+  height: calc(100vh - 100px);
 }
 .work {
-  margin-top: 64px;
+  margin-top: 16px;
 }
+
 .canvas-wrapper {
-  width: calc(100% + 64px);
-  margin-left: -32px;
-  top: -32px;
-  height: calc(100% + 68px);
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  top: -16px;
+  height: calc(100% + 35px);
+}
+@media (min-width: 767px) {
+  .hero-section,
+  .work {
+    height: calc(100vh - 132px);
+  }
+  .work {
+    margin-top: 32px;
+  }
+
+  .canvas-wrapper {
+    width: calc(100% + 64px);
+    margin-left: -32px;
+    top: -32px;
+    height: calc(100% + 67px);
+  }
+}
+
+.main-wrapper {
+  border: 32px solid #101010;
 }

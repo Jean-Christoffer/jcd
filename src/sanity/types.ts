@@ -176,6 +176,7 @@ export type WORK_QUERYResult = Array<{
   from: string | null;
   to: string | null;
 }>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {

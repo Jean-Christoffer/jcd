@@ -13,15 +13,13 @@ export default function Work({ data }: WorkProps) {
   return (
     <article className="flex flex-col gap-7">
       <ul className="flex flex-col gap-7 list">
-        <h1 className="text-4xl md:text-6xl font-bold list-item opacity-0">
-          Experience
-        </h1>
+        <h1 className="text-4xl md:text-6xl font-bold">Experience</h1>
         {data.map((work) => (
-          <li key={work.title} className="list-item opacity-0">
+          <li key={work.title}>
             <Card workData={work} />
           </li>
         ))}
-        <p className="list-item  opacity-0 ">
+        <p>
           Contact me on{" "}
           <Link
             href="https://www.linkedin.com/in/jean-christoffer-d-7b7552260/"

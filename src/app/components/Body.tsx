@@ -95,7 +95,7 @@ export default function Body({ data }: BodyProps) {
 
       const tl = gsap.timeline();
       const tl2 = gsap.timeline();
-      const tl3 = gsap.timeline();
+
 
       tl.to(".hero", {
         scrollTrigger: {
@@ -118,24 +118,13 @@ export default function Body({ data }: BodyProps) {
           duration: 1.5,
           ease: "sine.inOut",
         });
-      tl3.to(".list .list-item", {
-        opacity: 1,
-        ease: "sine.in",
-        stagger: 0.2,
-        scrollTrigger: {
-          ...tlConfig,
-          start: "top 92%",
-          end: "10% 60%",
-          trigger: ".work",
-        },
-      });
     },
     { dependencies: [pathLength], scope: containerRef }
   );
   return (
     <div
       ref={containerRef}
-      className="overflow-x-hidden overflow-y-auto h-screen relative p-16 "
+      className="overflow-x-hidden overflow-y-auto h-screen relative p-4 md:p-8 main-wrapper"
     >
       <div className="pointer-events-none fixed inset-0 z-20">
         <svg width="100%" height="100%" preserveAspectRatio="none">
