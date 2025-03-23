@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { WorkItem } from "@/sanity/types";
+import { WorkItem } from "./types";
 
 interface CardProps {
   workData: WorkItem;
@@ -9,27 +9,42 @@ interface CardProps {
 
 interface DescriptionProps {
   description: string | null;
+  categories: WorkItem["categories"];
 }
+
 export default function Card({ workData }: CardProps) {
   const { title, description, categories } = workData;
 
-  const [showArticle, setShowArticle] = useState<boolean>(false);
+  const [showDescription, setShowDescription] = useState<boolean>(false);
   function handleClick() {
-    setShowArticle((prev) => !prev);
+    setShowDescription((prev) => !prev);
   }
   return (
     <article>
       <button onClick={handleClick} className="hover:cursor-pointer">
         <h3 className="text-2xl md:text-4xl">{title}</h3>
       </button>
-      {showArticle && <Description description={description} />}
-      {categories?.map((c) => <p key={c._id}>{c.title}</p>)}
+      {showDescription && (
+        <Description description={description} categories={categories} />
+      )}
     </article>
   );
 }
 
-const Description = ({ description }: DescriptionProps) => {
+const Description = ({ description, categories }: DescriptionProps) => {
   if (!description) return null;
 
-  return <p>{description}</p>;
+  return (
+    <div>
+      <p>{description}</p>
+      <p>
+        Technologies used:
+        <span className="flex items-center gap-4">
+          {categories?.map((c, i) => (
+            <span key={i + `${c.title}`}>{c.title}</span>
+          ))}
+        </span>
+      </p>
+    </div>
+  );
 };

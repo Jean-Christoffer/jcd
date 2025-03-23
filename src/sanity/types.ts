@@ -176,16 +176,6 @@ export type WORK_QUERYResult = Array<{
   from: string | null;
   to: string | null;
 }>;
-export type WorkItem = {
-  title: string | null;
-  description: string | null;
-  categories: Array<{
-    _id: string;
-    title: string | null;
-  }> | null;
-  from: string | null;
-  to: string | null;
-}
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
