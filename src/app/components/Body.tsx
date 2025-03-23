@@ -87,7 +87,7 @@ export default function Body({ data }: BodyProps) {
             trigger: ".hero",
             endTrigger: ".work",
             start: "center 10%",
-            end: "20% center",
+            end: "20% 25%",
           },
         });
       }
@@ -95,7 +95,6 @@ export default function Body({ data }: BodyProps) {
 
       const tl = gsap.timeline();
       const tl2 = gsap.timeline();
-
 
       tl.to(".hero", {
         scrollTrigger: {

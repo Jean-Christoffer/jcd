@@ -40,10 +40,10 @@ const Description = ({ description, categories }: DescriptionProps) => {
   if (!description) return null;
 
   return (
-    <div>
-      <p className="mb-4">{description}</p>
+    <div className="max-w-[590px]">
+      <p className="mb-4 description">{description}</p>
       <div>
-        Technologies used:
+        <span><strong>Technologies used:</strong></span>
         <span className="flex items-center gap-4 flex-wrap mt-4">
           {categories?.map((category) => {
             const slug = category.slug?.current;
