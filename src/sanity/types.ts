@@ -165,13 +165,14 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: WORK_QUERY
-// Query: *[_type == "work"]{title, description, categories[]->{    _id,    title,  },from, to}
+// Query: *[_type == "work"]{title, description, categories[]->{    _id,    title,    slug,  },from, to}
 export type WORK_QUERYResult = Array<{
   title: string | null;
   description: string | null;
   categories: Array<{
     _id: string;
     title: string | null;
+    slug: Slug | null;
   }> | null;
   from: string | null;
   to: string | null;
@@ -181,6 +182,6 @@ export type WORK_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"work\"]{title, description, categories[]->{\n    _id,\n    title,\n  },from, to}": WORK_QUERYResult;
+    "*[_type == \"work\"]{title, description, categories[]->{\n    _id,\n    title,\n    slug,\n  },from, to}": WORK_QUERYResult;
   }
 }

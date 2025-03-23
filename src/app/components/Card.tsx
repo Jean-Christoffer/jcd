@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { WorkItem } from "./types";
+import { Icon } from "@iconify/react";
+import { iconMap } from "@/iconMap";
 
 interface CardProps {
   workData: WorkItem;
@@ -21,7 +23,10 @@ export default function Card({ workData }: CardProps) {
   }
   return (
     <article>
-      <button onClick={handleClick} className="hover:cursor-pointer">
+      <button
+        onClick={handleClick}
+        className="hover:cursor-pointer article-expandable mb-4"
+      >
         <h3 className="text-2xl md:text-4xl">{title}</h3>
       </button>
       {showDescription && (
@@ -36,15 +41,26 @@ const Description = ({ description, categories }: DescriptionProps) => {
 
   return (
     <div>
-      <p>{description}</p>
-      <p>
+      <p className="mb-4">{description}</p>
+      <div>
         Technologies used:
-        <span className="flex items-center gap-4">
-          {categories?.map((c, i) => (
-            <span key={i + `${c.title}`}>{c.title}</span>
-          ))}
+        <span className="flex items-center gap-4 flex-wrap mt-4">
+          {categories?.map((category) => {
+            const slug = category.slug?.current;
+            const iconName = iconMap[slug ?? ""];
+
+            return (
+              <div key={category._id}>
+                {iconName ? (
+                  <Icon icon={iconName} width={30} height={30} />
+                ) : (
+                  <span>{category.title}</span>
+                )}
+              </div>
+            );
+          })}
         </span>
-      </p>
+      </div>
     </div>
   );
 };
