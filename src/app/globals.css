@@ -32,10 +32,12 @@ body {
   stroke: hsl(146, 72%, 58%);
 }
 .hero-section,
-.work {
+.work,
+.projects {
   height: calc(100vh - 100px);
 }
-.work {
+.work,
+.projects {
   margin-top: 16px;
 }
 
