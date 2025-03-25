@@ -5,6 +5,9 @@ import type p5 from "p5";
 
 const checkIsMobile = (width: number) => width < 768;
 
+const isOnScreen = ({ x, y }: p5.Vector, width: number, height: number): boolean =>
+  x >= 0 && x <= width && y >= 0 && y <= height;
+
 export default function Canvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const p5InstanceRef = useRef<p5>(null);
@@ -22,10 +25,6 @@ export default function Canvas() {
         targetColor.h = p.random(0, 360);
         targetColor.s = p.random(50, 100);
         targetColor.l = p.random(40, 60);
-      };
-
-      const onScreen = (v: p5.Vector, width: number, height: number) => {
-        return v.x >= 0 && v.x <= width && v.y >= 0 && v.y <= height;
       };
 
       p.setup = () => {
@@ -72,7 +71,7 @@ export default function Canvas() {
           particle.x += p.cos(a);
           particle.y += p.sin(a);
 
-          if (!onScreen(particle, width, height)) {
+          if (!isOnScreen(particle, width, height)) {
             particle.x = p.random(width);
             particle.y = p.random(height);
           }
