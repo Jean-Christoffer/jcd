@@ -142,6 +142,25 @@ export type Slug = {
   source?: string;
 };
 
+export type Project = {
+  _id: string;
+  _type: "project";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+  site?: string;
+  git?: string;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+};
+
 export type Work = {
   _id: string;
   _type: "work";
@@ -161,7 +180,7 @@ export type Work = {
   to?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | SanityAssetSourceData | Category | Slug | Work;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | SanityAssetSourceData | Category | Slug | Project | Work;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: WORK_QUERY
@@ -177,11 +196,27 @@ export type WORK_QUERYResult = Array<{
   from: string | null;
   to: string | null;
 }>;
+// Variable: PROJECT_QUERY
+// Query: *[_type == "project"]{title, description, site, git, categories[]->{    _id,    title,    slug,  },from, to}
+export type PROJECT_QUERYResult = Array<{
+  title: string | null;
+  description: string | null;
+  site: string | null;
+  git: string | null;
+  categories: Array<{
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+  }> | null;
+  from: null;
+  to: null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"work\"]{title, description, categories[]->{\n    _id,\n    title,\n    slug,\n  },from, to}": WORK_QUERYResult;
+    "*[_type == \"project\"]{title, description, site, git, categories[]->{\n    _id,\n    title,\n    slug,\n  },from, to}": PROJECT_QUERYResult;
   }
 }

@@ -16,7 +16,7 @@ export default function Work({ data }: WorkProps) {
         <h1 className="text-4xl md:text-6xl font-bold mb-2">Experience</h1>
         {data.map((work) => (
           <li key={work.title}>
-            <Card workData={work} />
+            <Card data={work} />
           </li>
         ))}
         <p>
