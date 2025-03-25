@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import Canvas from "./Canvas";
 import Hero from "./Hero";
 import Work from "./Work";
+import Projects from "./Projects";
 
 import { WORK_QUERYResult } from "@/sanity/types";
 
@@ -85,7 +86,7 @@ export default function Body({ data }: BodyProps) {
             scroller: containerRef.current,
             refreshPriority: 1,
             trigger: ".hero",
-            endTrigger: ".work",
+            endTrigger: ".projects",
             start: "center 10%",
             end: "20% 25%",
           },
@@ -155,6 +156,9 @@ export default function Body({ data }: BodyProps) {
 
       <section className="work relative z-10">
         <Work data={data} />
+      </section>
+      <section className="projects relative z-10">
+        <Projects />
       </section>
     </div>
   );
