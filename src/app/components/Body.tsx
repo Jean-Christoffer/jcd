@@ -8,20 +8,24 @@ import { useEffect, useRef, useState } from "react";
 import Canvas from "./Canvas";
 import Hero from "./Hero";
 import Work from "./Work";
+import Projects from "./Projects";
 
-import { WORK_QUERYResult } from "@/sanity/types";
+import { WORK_QUERYResult, PROJECT_QUERYResult } from "@/sanity/types";
 
 interface BodyProps {
-  data: WORK_QUERYResult;
+  experience: WORK_QUERYResult;
+  projects: PROJECT_QUERYResult;
 }
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export default function Body({ data }: BodyProps) {
+export default function Body({ experience, projects }: BodyProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
   const [pathData, setPathData] = useState<string>("");
   const [pathLength, setPathLength] = useState<number>(0);
+
+  console.log(projects);
 
   function calcPath(rect: DOMRect) {
     const offset = 32;
@@ -85,7 +89,7 @@ export default function Body({ data }: BodyProps) {
             scroller: containerRef.current,
             refreshPriority: 1,
             trigger: ".hero",
-            endTrigger: ".work",
+            endTrigger: ".projects",
             start: "center 10%",
             end: "20% 25%",
           },
@@ -154,7 +158,10 @@ export default function Body({ data }: BodyProps) {
       </section>
 
       <section className="work relative z-10">
-        <Work data={data} />
+        <Work data={experience} />
+      </section>
+      <section className="projects relative z-10">
+        <Projects data={projects} />
       </section>
     </div>
   );

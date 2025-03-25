@@ -1,21 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { WorkItem } from "./types";
+import { CardItem } from "./types";
 import { Icon } from "@iconify/react";
 import { iconMap } from "@/iconMap";
+import Link from "next/link";
 
 interface CardProps {
-  workData: WorkItem;
+  data: CardItem;
 }
 
 interface DescriptionProps {
   description: string | null;
-  categories: WorkItem["categories"];
+  categories: CardItem["categories"];
 }
 
-export default function Card({ workData }: CardProps) {
-  const { title, description, categories } = workData;
+export default function Card({ data }: CardProps) {
+  const { title, description, categories } = data;
 
   const [showDescription, setShowDescription] = useState<boolean>(false);
   function handleClick() {
@@ -30,7 +31,26 @@ export default function Card({ workData }: CardProps) {
         <h3 className="text-2xl md:text-4xl">{title}</h3>
       </button>
       {showDescription && (
-        <Description description={description} categories={categories} />
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-4">
+            {data.site && (
+              <Link href={data.site} target="_blank" className="underline">
+                <em>
+                  <strong>Live site</strong>
+                </em>
+              </Link>
+            )}
+            {data.git && (
+              <Link href={data.git} target="_blank" className="underline">
+                <em>
+                  <strong>GitHub</strong>
+                </em>
+              </Link>
+            )}
+          </div>
+
+          <Description description={description} categories={categories} />
+        </div>
       )}
     </article>
   );
@@ -43,7 +63,9 @@ const Description = ({ description, categories }: DescriptionProps) => {
     <div className="max-w-[590px]">
       <p className="mb-4 description">{description}</p>
       <div>
-        <span><strong>Technologies used:</strong></span>
+        <span>
+          <strong>Technologies used:</strong>
+        </span>
         <span className="flex items-center gap-4 flex-wrap mt-4">
           {categories?.map((category) => {
             const slug = category.slug?.current;

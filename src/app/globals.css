@@ -32,10 +32,12 @@ body {
   stroke: hsl(146, 72%, 58%);
 }
 .hero-section,
-.work {
-  height: calc(100vh - 100px);
+.work,
+.projects {
+  min-height: calc(100vh - 100px);
 }
-.work {
+.work,
+.projects {
   margin-top: 16px;
 }
 
@@ -47,10 +49,12 @@ body {
 }
 @media (min-width: 767px) {
   .hero-section,
-  .work {
-    height: calc(100vh - 132px);
+  .work,
+  .projects {
+    min-height: calc(100vh - 132px);
   }
-  .work {
+  .work,
+  .projects {
     margin-top: 32px;
   }
 

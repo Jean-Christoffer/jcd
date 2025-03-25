@@ -1,4 +1,4 @@
-export type WorkItem = {
+export type CardItem = {
     title: string | null;
     description: string | null;
     categories: Array<{
@@ -10,7 +10,9 @@ export type WorkItem = {
             source?: string;
         } | null
     }> | null;
-    from: string | null;
-    to: string | null;
+    site?: string | null;
+    git?: string | null;
+    from?: string | null;
+    to?: string | null;
 }
 
