@@ -43,7 +43,7 @@ export default function Card({ data }: CardProps) {
             {data.git && (
               <Link href={data.git} target="_blank" className="underline">
                 <em>
-                  <strong>Github</strong>
+                  <strong>GitHub</strong>
                 </em>
               </Link>
             )}

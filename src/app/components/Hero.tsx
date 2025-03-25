@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 import About from "./About";
+import Link from "next/link";
 
 gsap.registerPlugin(useGSAP);
 
@@ -35,7 +36,7 @@ export default function Hero() {
           }
         )
         .fromTo(
-          ".animate4, .animate5",
+          ".animate4, .animate5, .animate6",
           { y: -20, opacity: 0 },
           { y: 0, opacity: 1, ease: "sine.inOut" },
           "<"
@@ -55,6 +56,16 @@ export default function Hero() {
         <span className="animate4 opacity-0">Web Developer</span>
       </h1>
       <About />
+      <p className="mt-2 flex items-center gap-2 animate6 opacity-0">
+        <em>Contact me on</em>
+        <Link
+          href="https://www.linkedin.com/in/jean-christoffer-d-7b7552260/"
+          target="_blank"
+          className="underline font-bold "
+        >
+          Linkedin
+        </Link>
+      </p>
     </div>
   );
 }

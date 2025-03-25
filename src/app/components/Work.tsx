@@ -2,7 +2,6 @@
 
 import type { WORK_QUERYResult } from "@/sanity/types";
 
-import Link from "next/link";
 import Card from "./Card";
 
 interface WorkProps {
@@ -19,16 +18,6 @@ export default function Work({ data }: WorkProps) {
             <Card data={work} />
           </li>
         ))}
-        <p>
-          Contact me on{" "}
-          <Link
-            href="https://www.linkedin.com/in/jean-christoffer-d-7b7552260/"
-            target="_blank"
-            className="underline font-bold italic"
-          >
-            Linkedin
-          </Link>
-        </p>
       </ul>
     </article>
   );
