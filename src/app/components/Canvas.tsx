@@ -35,8 +35,8 @@ export default function Canvas() {
         p.createCanvas(width, height).parent(containerRef.current!);
         p.colorMode(p.HSL, 360, 100, 100, 255);
 
-        const num = checkIsMobile(width) ? 500 : 2000;
-        const alpha = checkIsMobile(width) ? 105 : 155;
+        const num = checkIsMobile(width) ? 1000 : 2200;
+        const alpha = checkIsMobile(width) ? 145 : 205;
         setParticlesAmount(num);
         setAlphaValue(alpha);
 
