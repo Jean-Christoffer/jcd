@@ -13,7 +13,6 @@ export const projectId = assertValue(
 export const apiKey = assertValue(
   process.env.NEXT_SANITY_API_KEY,
   'Missing environment variable: NEXT_SANITY_API_KEY'
-
 )
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
