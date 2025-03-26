@@ -25,8 +25,6 @@ export default function Body({ experience, projects }: BodyProps) {
   const [pathData, setPathData] = useState<string>("");
   const [pathLength, setPathLength] = useState<number>(0);
 
-  console.log(projects);
-
   function calcPath(rect: DOMRect) {
     const offset = 32;
 
