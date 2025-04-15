@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div className=" relative">
-      <div className="d h-dvh">
+      <div className="h-dvh">
         <main className="relative flex flex-col">
           <Body experience={workExperience} projects={projects} />
         </main>

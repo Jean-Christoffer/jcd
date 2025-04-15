@@ -4,6 +4,9 @@
   --background: #d9d9d9;
   --foreground: #171717;
 }
+html {
+  height: 100%;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -34,7 +37,7 @@ body {
 .hero-section,
 .work,
 .projects {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100dvh - 100px);
 }
 .work,
 .projects {
@@ -51,7 +54,7 @@ body {
   .hero-section,
   .work,
   .projects {
-    min-height: calc(100vh - 132px);
+    min-height: calc(100dvh - 132px);
   }
   .work,
   .projects {
