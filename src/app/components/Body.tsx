@@ -125,7 +125,7 @@ export default function Body({ experience, projects }: BodyProps) {
   return (
     <div
       ref={containerRef}
-      className="overflow-x-hidden overflow-y-auto h-screen relative p-4 md:p-8 main-wrapper"
+      className="overflow-x-hidden overflow-y-auto h-dvh relative p-4 md:p-8 main-wrapper"
     >
       <div className="pointer-events-none fixed inset-0 z-20">
         <svg width="100%" height="100%" preserveAspectRatio="none">
