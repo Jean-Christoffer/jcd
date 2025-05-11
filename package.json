@@ -24,7 +24,7 @@
     "p5": "^1.11.3",
     "react": "^19.0.0",
     "react-dom": "^19.1.0",
-    "sanity": "^3.80.1",
+    "sanity": "^3.88.2",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
