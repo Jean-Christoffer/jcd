@@ -1,6 +1,8 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
+
 export function useLenisContainer(
   containerRef: React.RefObject<HTMLElement | null>,
 ) {
