@@ -5,8 +5,11 @@ import type p5 from "p5";
 
 const checkIsMobile = (width: number) => width < 768;
 
-const isOnScreen = ({ x, y }: p5.Vector, width: number, height: number): boolean =>
-  x >= 0 && x <= width && y >= 0 && y <= height;
+const isOnScreen = (
+  { x, y }: p5.Vector,
+  width: number,
+  height: number,
+): boolean => x >= 0 && x <= width && y >= 0 && y <= height;
 
 export default function Canvas() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,7 +44,7 @@ export default function Canvas() {
 
         for (let i = 0; i < particlesAmount; i++) {
           particlesRef.current.push(
-            p.createVector(p.random(width), p.random(height))
+            p.createVector(p.random(width), p.random(height)),
           );
         }
 
@@ -78,7 +81,7 @@ export default function Canvas() {
         }
       };
     },
-    [alphaValue, particlesAmount]
+    [alphaValue, particlesAmount],
   );
 
   // Init p5
@@ -117,5 +120,7 @@ export default function Canvas() {
     };
   }, []);
 
-  return <div ref={containerRef} className="absolute inset-0 canvas-wrapper" />;
+  return (
+    <div ref={containerRef} className="absolute inset-0 canvas-wrapper " />
+  );
 }

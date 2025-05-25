@@ -11,6 +11,7 @@ import Work from "./Work";
 import Projects from "./Projects";
 
 import { WORK_QUERYResult, PROJECT_QUERYResult } from "@/sanity/types";
+import { useLenisContainer } from "../hooks/useLenisContainer";
 
 interface BodyProps {
   experience: WORK_QUERYResult;
@@ -24,6 +25,8 @@ export default function Body({ experience, projects }: BodyProps) {
   const pathRef = useRef<SVGPathElement>(null);
   const [pathData, setPathData] = useState<string>("");
   const [pathLength, setPathLength] = useState<number>(0);
+
+  const lenis = useLenisContainer(containerRef);
 
   function calcPath(rect: DOMRect) {
     const offset = 32;
@@ -84,7 +87,6 @@ export default function Body({ experience, projects }: BodyProps) {
           ease: "power1.inOut",
           scrollTrigger: {
             ...tlConfig,
-            scroller: containerRef.current,
             refreshPriority: 1,
             trigger: ".hero",
             endTrigger: ".projects",
@@ -120,12 +122,12 @@ export default function Body({ experience, projects }: BodyProps) {
           ease: "sine.inOut",
         });
     },
-    { dependencies: [pathLength], scope: containerRef }
+    { dependencies: [pathLength, lenis], scope: containerRef },
   );
   return (
     <div
       ref={containerRef}
-      className="overflow-x-hidden overflow-y-auto h-dvh relative p-4 md:p-8 main-wrapper"
+      className="overflow-x-hidden h-dvh overflow-y-scroll relative main-wrapper"
     >
       <div className="pointer-events-none fixed inset-0 z-20">
         <svg width="100%" height="100%" preserveAspectRatio="none">
@@ -146,19 +148,16 @@ export default function Body({ experience, projects }: BodyProps) {
           />
         </svg>
       </div>
-      <section className="hero-section sticky top-0 ">
-        <figure>
-          <div className="hero relative z-10">
-            <Hero />
-          </div>
-          <Canvas />
-        </figure>
+      <section className="hero-section sticky top-0 h-dvh ">
+        <div className="hero relative z-10 p-12 md:p-14">
+          <Hero />
+        </div>
+        <Canvas />
       </section>
-
-      <section className="work relative z-10">
+      <section className="work relative z-10 h-dvh p-12 md:p-14">
         <Work data={experience} />
       </section>
-      <section className="projects relative z-10">
+      <section className="projects relative z-10 h-dvh p-12 md:p-14">
         <Projects data={projects} />
       </section>
     </div>
