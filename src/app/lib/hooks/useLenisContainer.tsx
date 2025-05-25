@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-
-// Custom hook for container-specific Lenis
 export function useLenisContainer(
   containerRef: React.RefObject<HTMLElement | null>,
 ) {
@@ -11,7 +9,6 @@ export function useLenisContainer(
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Initialize Lenis with custom container
     lenisRef.current = new Lenis({
       wrapper: containerRef.current,
       content: containerRef.current,
@@ -19,7 +16,6 @@ export function useLenisContainer(
       duration: 1.5,
     });
 
-    // Animation loop
     function raf(time: number) {
       lenisRef.current?.raf(time);
       requestAnimationFrame(raf);

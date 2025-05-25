@@ -1,5 +1,7 @@
 import { WORK_QUERY, PROJECT_QUERY } from "@/sanity/lib/queries";
-import Body from "./components/Body";
+
+import Content from "./components/Content";
+
 import { client } from "@/sanity/lib/client";
 import { WORK_QUERYResult, PROJECT_QUERYResult } from "@/sanity/types";
 
@@ -11,11 +13,9 @@ export default async function Home() {
 
   return (
     <div className=" relative">
-      <div className="h-dvh">
-        <main className="relative flex flex-col">
-          <Body experience={workExperience} projects={projects} />
-        </main>
-      </div>
+      <main className="relative flex flex-col">
+        <Content experience={workExperience} projects={projects} />
+      </main>
     </div>
   );
 }

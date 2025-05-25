@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { CardItem } from "./types";
+import { CardItem } from "../types";
 import { Icon } from "@iconify/react";
-import { iconMap } from "@/iconMap";
+import { iconMap } from "../../lib/configs/iconMap";
+
 import Link from "next/link";
 
 interface CardProps {
