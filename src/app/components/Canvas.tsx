@@ -84,7 +84,6 @@ export default function Canvas() {
     [alphaValue, particlesAmount],
   );
 
-  // Init p5
   useEffect(() => {
     import("p5").then((module) => {
       const p5 = module.default;
@@ -97,7 +96,6 @@ export default function Canvas() {
     };
   }, [sketch]);
 
-  // Resize
   useEffect(() => {
     if (!containerRef.current) return;
 
