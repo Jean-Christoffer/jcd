@@ -59,7 +59,7 @@ export default function Canvas() {
 
         p.clear();
 
-        setInterval(colorRotation, 5000);
+        setInterval(colorRotation, 10000);
       };
 
       p.draw = () => {
