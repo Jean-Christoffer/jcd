@@ -63,16 +63,16 @@ export default function Content({ experience, projects }: BodyProps) {
           />
         </svg>
       </div>
-      <section className="hero-section sticky top-0 h-dvh ">
+      <section className="hero-section sticky top-0 min-h-dvh ">
         <div className="hero relative h-full z-10 p-12 md:p-14">
           <Hero />
         </div>
         <Canvas />
       </section>
-      <section className="work relative z-10 h-dvh p-12 md:p-14">
+      <section className="work relative z-10 min-h-dvh p-12 md:p-14">
         <Work data={experience} />
       </section>
-      <section className="projects relative z-10 h-dvh p-12 md:p-14">
+      <section className="projects relative z-10 min-h-dvh p-12 md:p-14">
         <Projects data={projects} />
       </section>
     </div>
