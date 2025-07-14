@@ -16,18 +16,29 @@ export default function Canvas() {
   const p5InstanceRef = useRef<p5>(null);
   const particlesRef = useRef<p5.Vector[]>([]);
   const [particlesAmount, setParticlesAmount] = useState(0);
-  const [alphaValue, setAlphaValue] = useState(0);
 
   const sketch = useCallback(
     (p: p5) => {
       const noiseScale = 0.01 / 2;
-      const currentColor = { h: 50, s: 50, l: 25 };
-      const targetColor = { h: 50, s: 50, l: 25 };
 
-      const randomizeColor = () => {
-        targetColor.h = p.random(0, 360);
-        targetColor.s = p.random(50, 100);
-        targetColor.l = p.random(40, 60);
+      const colors = [
+        { h: 74, s: 98, l: 41 }, // #87CF02 (start)
+        { h: 89, s: 61, l: 55 }, // #9FCF47
+        { h: 116, s: 98, l: 41 }, // #31CF02
+        { h: 132, s: 98, l: 41 }, // #02CF21
+        { h: 58, s: 98, l: 41 }, // #CFCA02
+        { h: 48, s: 98, l: 41 }, // #CFB202
+      ];
+
+      let currentColor = colors[0];
+      let nextColor = colors[1];
+      let index = 0;
+
+      const colorRotation = () => {
+        index += 1;
+        if (index === colors.length - 1) index = 0;
+        currentColor = colors[index];
+        nextColor = colors[index + 1];
       };
 
       p.setup = () => {
@@ -38,9 +49,7 @@ export default function Canvas() {
         p.colorMode(p.HSL, 360, 100, 100, 255);
 
         const num = checkIsMobile(width) ? 1000 : 2200;
-        const alpha = checkIsMobile(width) ? 145 : 205;
         setParticlesAmount(num);
-        setAlphaValue(alpha);
 
         for (let i = 0; i < particlesAmount; i++) {
           particlesRef.current.push(
@@ -49,8 +58,8 @@ export default function Canvas() {
         }
 
         p.clear();
-        randomizeColor();
-        setInterval(randomizeColor, 15000);
+
+        setInterval(colorRotation, 5000);
       };
 
       p.draw = () => {
@@ -58,11 +67,12 @@ export default function Canvas() {
         const height = p.height;
 
         p.background("#101010");
-        currentColor.h = p.lerp(currentColor.h, targetColor.h, 0.01);
-        currentColor.s = p.lerp(currentColor.s, targetColor.s, 0.01);
-        currentColor.l = p.lerp(currentColor.l, targetColor.l, 0.01);
 
-        p.stroke(currentColor.h, currentColor.s, currentColor.l, alphaValue);
+        currentColor.h = p.lerp(currentColor.h, nextColor.h, 0.01);
+        currentColor.s = p.lerp(currentColor.s, nextColor.s, 0.01);
+        currentColor.l = p.lerp(currentColor.l, nextColor.l, 0.01);
+
+        p.stroke(currentColor.h, currentColor.s, currentColor.l, 205);
 
         for (let i = 0; i < particlesAmount; i++) {
           const particle = particlesRef.current[i];
@@ -81,7 +91,7 @@ export default function Canvas() {
         }
       };
     },
-    [alphaValue, particlesAmount],
+    [particlesAmount],
   );
 
   useEffect(() => {
@@ -104,9 +114,9 @@ export default function Canvas() {
         const width = containerRef.current.offsetWidth;
         const height = containerRef.current.offsetHeight;
         const num = checkIsMobile(width) ? 500 : 2000;
-        const alpha = checkIsMobile(width) ? 105 : 155;
+
         setParticlesAmount(num);
-        setAlphaValue(alpha);
+
         p5InstanceRef.current.resizeCanvas(width, height);
       }
     });

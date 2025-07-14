@@ -59,30 +59,40 @@ body {
   z-index: 123;
 }
 
-@media (min-width: 767px) {
-  .article-expandable {
-    font-size: 2rem;
-    color: #ffffff;
-    position: relative;
-    display: inline-block;
-  }
+.article-expandable {
+  font-size: 2rem;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+}
 
-  .article-expandable::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to left,
-        hsl(146, 72%, 58%),
-        hsl(210, 100%, 60%));
+.article-expandable::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
 
-    bottom: -5px;
-    right: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease-out;
-  }
+  background: linear-gradient(
+    to left,
+    hsl(74, 98%, 41%),
+    hsl(89, 61%, 55%),
+    hsl(116, 98%, 41%),
+    hsl(132, 98%, 41%),
+    hsl(58, 98%, 41%),
+    hsl(48, 98%, 41%)
+  );
 
+  bottom: -5px;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease-out;
+}
+
+.article-expandable.clicked::after {
+  transform: scaleX(1);
+}
+@media (min-width: 768px) {
   .article-expandable:hover::after {
     transform: scaleX(1);
   }

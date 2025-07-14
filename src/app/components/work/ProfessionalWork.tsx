@@ -10,9 +10,9 @@ interface WorkProps {
 
 export default function Work({ data }: WorkProps) {
   return (
-    <article className="flex flex-col gap-7 pb-4">
+    <article className="flex flex-col gap-4 pb-4">
+      <h2 className="text-4xl md:text-6xl font-bold mb-2">Experience</h2>
       <ul className="flex flex-col gap-4 list">
-        <h1 className="text-4xl md:text-6xl font-bold mb-2">Experience</h1>
         {data.map((work) => (
           <li key={work.title}>
             <Card data={work} />
