@@ -27,7 +27,7 @@ export default function Card({ data }: CardProps) {
     <article>
       <button
         onClick={handleClick}
-        className={`hover:cursor-pointer article-expandable mb-4 ${showDescription ? "clicked" : ""}`}
+        className={`hover:cursor-none article-expandable mb-4 ${showDescription ? "clicked" : ""}`}
       >
         <h3 className="text-2xl md:text-4xl">{title}</h3>
       </button>

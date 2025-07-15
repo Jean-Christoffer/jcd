@@ -8,6 +8,10 @@
 html {
   height: 100%;
 }
+html,
+body {
+  cursor: none;
+}
 
 @theme inline {
   --color-background: var(--background);
