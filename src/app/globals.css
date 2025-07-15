@@ -12,26 +12,6 @@ html,
 body {
   cursor: none;
 }
-.magnifier {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  overflow: hidden;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  background: black;
-}
-
-.magnifier span {
-  position: absolute;
-  font-size: 5rem; /* Increase size inside magnifier */
-  font-weight: bold;
-  white-space: nowrap;
-  color: white;
-}
 
 @theme inline {
   --color-background: var(--background);
