@@ -63,7 +63,7 @@ export default function Content({ experience, projects }: BodyProps) {
           />
         </svg>
       </div>
-      <section className="hero-section sticky top-0 min-h-dvh ">
+      <section className="hero-section sticky top-0 h-dvh ">
         <div className="hero relative h-full z-10 p-12 md:p-14">
           <Hero />
         </div>
