@@ -23,6 +23,7 @@ export default function Canvas() {
       let pulseRadius = 0;
 
       const noiseScale = 0.01 / 2;
+      const perlin = p.noise.bind(p);
 
       const pulseMaxRadius = 150;
       const pulseSpeed = 10;
@@ -50,7 +51,7 @@ export default function Canvas() {
 
       p.setup = () => {
         const width = containerRef.current?.offsetWidth ?? p.windowWidth;
-        const height = containerRef.current?.offsetHeight ?? p.windowHeight;
+        const height = containerRef.current?.offsetHeight ?? p.windowHeight; 
 
         p.mousePressed = () => {
           pulseRadius = 0;
@@ -62,11 +63,10 @@ export default function Canvas() {
 
         const num = checkIsMobile(width) ? 1000 : 2200;
         setParticlesAmount(num);
+        particlesRef.current = [];
 
-        for (let i = 0; i < particlesAmount; i++) {
-          particlesRef.current.push(
-            p.createVector(p.random(width), p.random(height)),
-          );
+        for (let i = 0; i < num; i++) {
+          particlesRef.current.push(p.createVector(p.random(width), p.random(height)));
         }
 
         p.clear();
@@ -107,7 +107,7 @@ export default function Canvas() {
 
           p.point(particle.x, particle.y);
 
-          const n = p.noise(particle.x * noiseScale, particle.y * noiseScale);
+          const n = perlin(particle.x * noiseScale, particle.y * noiseScale);
           const noiseAngle = p.TAU * n;
 
           const dx = p.mouseX - particle.x;
@@ -133,6 +133,8 @@ export default function Canvas() {
             radialAngle,
             avoidanceStrength,
           );
+
+          if (!Number.isFinite(combinedAngle)) continue;
 
           let moveX = p.cos(combinedAngle);
           let moveY = p.sin(combinedAngle);
