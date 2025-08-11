@@ -8,11 +8,10 @@ export type CardItem = {
             _type: "slug";
             current?: string;
             source?: string;
-        } | null
+        } | null;
     }> | null;
     site?: string | null;
     git?: string | null;
     from?: string | null;
     to?: string | null;
-}
-
+};
